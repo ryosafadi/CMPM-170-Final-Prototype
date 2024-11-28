@@ -7,22 +7,17 @@ public class ImageClickHandler : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-
-            if (Physics.Raycast(ray, out hit))
+        
+            if (Physics.Raycast(ray, out RaycastHit hit))
             {
-                GameObject clickedImage = hit.collider.gameObject;
+                GameObject clickedObject = hit.collider.gameObject;
 
-                if (clickedImage.CompareTag("Image"))
+                if (clickedObject.CompareTag("Image"))
                 {
-                    HandleImageClick(clickedImage);
+                    StaticData.PointScored();
+                    Destroy(hit.collider.gameObject);
                 }
             }
         }
-    }
-
-    void HandleImageClick(GameObject image)
-    {
-        Destroy(image);
     }
 }
