@@ -2,6 +2,11 @@ using UnityEngine;
 
 public class ImageClickHandler : MonoBehaviour
 {
+    [SerializeField] SpawnImages spawnScript;
+    Vector3 prevImagePos;
+    Quaternion prevImageRot;
+    Transform prevImageParent = null;
+
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -25,6 +30,21 @@ public class ImageClickHandler : MonoBehaviour
                     {
                         StaticData.ChangePoints(-1);
                         Destroy(hit.collider.gameObject);
+                    }
+
+                    if (prevImageParent != null)
+                    {
+                        spawnScript.SpawnImage(prevImagePos, prevImageRot, prevImageParent);
+
+                        prevImagePos = clickedObject.transform.position;
+                        prevImageRot = clickedObject.transform.rotation;
+                        prevImageParent = clickedObject.transform.parent;
+                    }
+                    else
+                    {
+                        prevImagePos = clickedObject.transform.position;
+                        prevImageRot = clickedObject.transform.rotation;
+                        prevImageParent = clickedObject.transform.parent;
                     }
                 }
             }

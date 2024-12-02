@@ -13,14 +13,19 @@ public class SpawnImages : MonoBehaviour
             {
                 Vector3 localPosition = new Vector3(i, 0.1f, j);
                 Vector3 worldPosition = transform.TransformPoint(localPosition);
-                GameObject newImage = Instantiate(image, worldPosition, transform.rotation, transform);
-
-                MeshRenderer meshRenderer = newImage.GetComponent<MeshRenderer>();
-                if (meshRenderer != null)
-                {
-                    meshRenderer.material = materials[Random.Range(0, materials.Length)];
-                }
+                SpawnImage(worldPosition, transform.rotation, transform);
             }
+        }
+    }
+
+    public void SpawnImage(Vector3 position, Quaternion rotation, Transform transform)
+    {
+        GameObject newImage = Instantiate(image, position, rotation, transform);
+
+        MeshRenderer meshRenderer = newImage.GetComponent<MeshRenderer>();
+        if (meshRenderer != null)
+        {
+            meshRenderer.material = materials[Random.Range(0, materials.Length)];
         }
     }
 }
