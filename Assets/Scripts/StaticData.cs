@@ -5,12 +5,12 @@ public static class StaticData
 {
     static int points = 0;
 
-    public static event Action OnPointScored;
+    public static event Action OnPointsChanged;
 
-    public static void PointScored()
+    public static void ChangePoints(int point)
     {
-        points++;
-        OnPointScored?.Invoke();
+        points += point;
+        OnPointsChanged?.Invoke();
     }
     
     public static int GetPoints()

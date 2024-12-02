@@ -14,8 +14,18 @@ public class ImageClickHandler : MonoBehaviour
 
                 if (clickedObject.CompareTag("Image"))
                 {
-                    StaticData.PointScored();
-                    Destroy(hit.collider.gameObject);
+                    Renderer renderer = clickedObject.GetComponent<Renderer>();
+
+                    if (renderer.material.name.Contains("TrafficLight"))
+                    {
+                        StaticData.ChangePoints(1);
+                        Destroy(hit.collider.gameObject);
+                    }
+                    else
+                    {
+                        StaticData.ChangePoints(-1);
+                        Destroy(hit.collider.gameObject);
+                    }
                 }
             }
         }

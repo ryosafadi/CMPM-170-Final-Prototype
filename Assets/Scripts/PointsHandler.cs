@@ -8,12 +8,12 @@ public class PointsHandler : MonoBehaviour
 
     private void OnEnable()
     {
-        StaticData.OnPointScored += ChangePointText;
+        StaticData.OnPointsChanged += ChangePointText;
     }
 
     private void OnDisable()
     {
-        StaticData.OnPointScored -= ChangePointText;
+        StaticData.OnPointsChanged -= ChangePointText;
     }
 
     private void Start()
