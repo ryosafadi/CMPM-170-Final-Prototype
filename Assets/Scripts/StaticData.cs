@@ -12,6 +12,11 @@ public static class StaticData
         points += point;
         OnPointsChanged?.Invoke();
     }
+
+    public static void ResetPoints()
+    {
+        points = 0;
+    }
     
     public static int GetPoints()
     {
