@@ -7,6 +7,6 @@ public class FinalScore : MonoBehaviour
     {
         TextMeshProUGUI textUI = GetComponent<TextMeshProUGUI>();
 
-        textUI.text = $"Final Score: {StaticData.GetPoints()}";
+        textUI.text = $"Final Score: {StaticData.GetPoints()} Points";
     }
 }
