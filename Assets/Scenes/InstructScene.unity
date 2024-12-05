@@ -344,7 +344,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 892ddba89172d19489bed9324872d55c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: RyoGameScene
+  sceneName: GameScene
 --- !u!1 &1178947642
 GameObject:
   m_ObjectHideFlags: 0

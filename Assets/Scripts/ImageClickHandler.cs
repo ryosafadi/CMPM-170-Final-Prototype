@@ -3,9 +3,17 @@ using UnityEngine;
 public class ImageClickHandler : MonoBehaviour
 {
     [SerializeField] SpawnImages spawnScript;
+    [SerializeField] AudioClip correct;
+    [SerializeField] AudioClip incorrect;
+    AudioSource audioSource;
     Vector3 prevImagePos;
     Quaternion prevImageRot;
     Transform prevImageParent = null;
+
+    void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
 
     void Update()
     {
@@ -24,11 +32,15 @@ public class ImageClickHandler : MonoBehaviour
                     if (renderer.material.name.Contains("TrafficLight"))
                     {
                         StaticData.ChangePoints(1);
+                        audioSource.clip = correct;
+                        audioSource.Play();
                         Destroy(hit.collider.gameObject);
                     }
                     else
                     {
                         StaticData.ChangePoints(-1);
+                        audioSource.clip = incorrect;
+                        audioSource.Play();
                         Destroy(hit.collider.gameObject);
                     }
 
@@ -46,6 +58,13 @@ public class ImageClickHandler : MonoBehaviour
                         prevImageRot = clickedObject.transform.rotation;
                         prevImageParent = clickedObject.transform.parent;
                     }
+                }
+
+                if (clickedObject.CompareTag("Distraction"))
+                {
+                    StaticData.ChangePoints(-3);
+                    audioSource.clip = incorrect;
+                    audioSource.Play();
                 }
             }
         }

@@ -18,6 +18,8 @@ public class PointsHandler : MonoBehaviour
 
     private void Start()
     {
+        StaticData.ResetPoints();
+
         textUI = gameObject.GetComponent<TextMeshProUGUI>();
         textUI.text = $"Points: {StaticData.GetPoints()}";
     }

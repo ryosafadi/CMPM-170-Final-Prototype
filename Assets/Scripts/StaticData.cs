@@ -7,6 +7,11 @@ public static class StaticData
 
     public static event Action OnPointsChanged;
 
+    public static void ResetPoints()
+    {
+        points = 0;
+    }
+
     public static void ChangePoints(int point)
     {
         points += point;
